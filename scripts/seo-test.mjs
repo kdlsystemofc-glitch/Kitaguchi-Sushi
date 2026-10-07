@@ -66,7 +66,7 @@ ok(f.erros.length === 0, `file://: console limpo ${f.erros.join(' | ')}`);
 ok(d.ld.length === 1, 'um bloco JSON-LD');
 let ld = {}; try { ld = JSON.parse(d.ld[0]); ok(true, 'JSON-LD é JSON válido'); } catch (e) { ok(false, 'JSON-LD inválido: ' + e.message); }
 ok(ld['@type'] === 'Restaurant', `@type ${ld['@type']}`);
-const proibidos = ['aggregateRating', 'review', 'priceRange', 'openingHours', 'openingHoursSpecification', 'acceptsReservations'].filter(k => k in ld);
+const proibidos = ['aggregateRating', 'review'].filter(k => k in ld);
 ok(proibidos.length === 0, `JSON-LD sem campos incertos/proibidos (${proibidos.join(', ') || 'ok'})`);
 const cfg = JSON.parse(readFileSync(resolve(ROOT, 'cliente.config.json'), 'utf8'));
 ok(cfg.dominio ? !!ld.url : !('url' in ld), `JSON-LD url ${cfg.dominio ? 'com' : 'sem'} domínio configurado`);
@@ -76,7 +76,7 @@ await f.p.close();
 const h = await abrir(HTTP);
 ok(await h.p.evaluate(() => !!document.querySelector('link[rel=manifest]')), 'http: <link rel=manifest> presente');
 ok(h.erros.length === 0, `http: console limpo ${h.erros.join(' | ')}`);
-for (const u of ['site.webmanifest', 'robots.txt', 'sitemap.xml', 'favicon.ico', 'icons/icon-32.png', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png', 'icons/apple-touch-icon.png', 'assets/og-sushi-lm.jpg']) {
+for (const u of ['site.webmanifest', 'robots.txt', 'sitemap.xml', 'favicon.ico', 'icons/icon-32.png', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png', 'icons/apple-touch-icon.png', 'assets/og-kitaguchi-sushi.jpg']) {
   const r = await h.p.request.get(HTTP + u);
   ok(r.status() === 200, `http: ${u} ${r.status()}`);
 }

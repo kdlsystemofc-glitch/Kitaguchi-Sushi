@@ -41,5 +41,5 @@ As fotos originais têm no máximo **1080 px** (a do salão, 640 px). **Não exi
 ## SEO (gerados por scripts/seo-assets.mjs, depois do build)
 | Arquivo | O que é | Origem |
 |---|---|---|
-| `assets/og-sushi-lm.jpg` (1200×630) | Prévia de compartilhamento (Open Graph/Twitter) | O hero aprovado renderizado a 1200×630 **sem a foto** (todas as fotos têm direito de uso pendente) e sem o CTA; nome e localização ampliados para ler na prévia de ~500 px. Contém texto em imagem só por ser prévia de rede social; o texto do site continua HTML. |
-| `favicon.ico` (16/32/48), `icons/icon-{16,32,48,192,512}.png`, `icons/apple-touch-icon.png`, `icons/maskable-512.png` | Ícones | O 鮨 (Shippori Mincho) sobre índigo. **Não** é o logo: o logo real tem 150 px (ilegível a 16–32 px) e diz "L&M" (nome pendente). Trocar quando chegar o logo em vetor. |
+| `assets/og-kitaguchi-sushi.jpg` (1200×630) | Prévia de compartilhamento (Open Graph/Twitter) | O hero aprovado renderizado a 1200×630 com identidade visual Kitaguchi Sushi e localização em Santo André. |
+| `favicon.ico` (16/32/48), `icons/icon-{16,32,48,192,512}.png`, `icons/apple-touch-icon.png`, `icons/maskable-512.png` | Ícones | Ícones gerados a partir do logo oficial do Kitaguchi Sushi (`imagens/logo-150.png`). |

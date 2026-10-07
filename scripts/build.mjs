@@ -121,7 +121,7 @@ const ldFalta = [
   !cli.ld.hasMenu && 'hasMenu',
   !cli.ld.sameAs && 'sameAs (Instagram)',
   !cli.logoLD && 'logo',
-  !cliCfg.nome?.oficial && 'alternateName ("L&amp;M" no logo × "LM" no Google)'
+  !cliCfg.nome?.oficial && 'nome.oficial'
 ].filter(Boolean);
 const seoDependeDominio = [
   `<link rel="canonical" href="${DOM ? abs('') : 'https://SEU-DOMINIO/'}">`,

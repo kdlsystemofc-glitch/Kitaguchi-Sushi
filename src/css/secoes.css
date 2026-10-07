@@ -63,12 +63,14 @@
   text-align: center;
 }
 .noren__nome {
-  font-size: clamp(1.6rem, 1rem + 2.6vw, 3rem);
+  font-size: clamp(1.1rem, 0.8rem + 2.2vw, 3rem);
   /* com texto ampliado (200%) o nome não pode passar da largura do painel */
-  font-size: min(clamp(1.6rem, 1rem + 2.6vw, 3rem), 16cqi);
+  font-size: min(clamp(1.1rem, 0.8rem + 2.2vw, 3rem), 11cqi);
   color: var(--papel);
+  letter-spacing: clamp(0.12em, 2.5cqi, var(--track-versal));
   /* compensa o espaçamento após a última letra para centralizar */
-  margin-right: calc(-1 * var(--track-versal));
+  margin-right: calc(-1 * clamp(0.12em, 2.5cqi, var(--track-versal)));
+  max-width: 100%;
 }
 .noren__nome span { display: block; }
 .noren__local {

@@ -1,6 +1,6 @@
-# Sushi LM — site
+# Kitaguchi Sushi — site
 
-Site de uma página do **Sushi LM**, restaurante japonês com rodízio na R. Afonsina, 244, Rudge Ramos, São Bernardo do Campo (SP).
+Site de uma página do **Kitaguchi Sushi**, restaurante japonês na Av. Itamarati, 1122, Vila Curuçá, Santo André (SP).
 
 > **Não publicar ainda.** Faltam dados e autorizações do cliente: veja **[PENDENCIAS-CLIENTE.md](PENDENCIAS-CLIENTE.md)**.
 

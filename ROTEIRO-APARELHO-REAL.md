@@ -29,9 +29,9 @@ Marque ✅/❌ e anote modelo, sistema e navegador.
 - [ ] Fontes: títulos em serifa elegante (Cormorant) e texto em serifa de livro (Source Serif). Se aparecer Times/Georgia, anotar.
 
 ## 4. Links
-- [ ] WhatsApp (hero e rodapé): abre o app na conversa com (11) 94032-0412.
+- [ ] WhatsApp (hero e rodapé): abre o app na conversa com (11) 96151-5506.
 - [ ] Telefone do rodapé: abre o discador.
-- [ ] "Abrir no mapa": abre o Google Maps (ou Apple Maps) no Sushi LM, R. Afonsina, 244.
+- [ ] "Abrir no mapa": abre o Google Maps (ou Apple Maps) no Kitaguchi Sushi, Av. Itamarati, 1122.
 - [ ] Se preenchidos: Cardápio, Pedir on-line e Instagram abrem os endereços certos.
 
 ## 5. Cores e aparência
@@ -41,10 +41,10 @@ Marque ✅/❌ e anote modelo, sistema e navegador.
 - [ ] Celular com notch deitado: conteúdo não fica escondido atrás do recorte.
 
 ## 6. Compartilhamento e ícones (depois de ter domínio)
-- [ ] Enviar o link no WhatsApp: aparece a prévia com o noren, "SUSHI LM" e o endereço.
-- [ ] iPhone: "Adicionar à Tela de Início" mostra o ícone do 鮨.
-- [ ] Android Chrome: o ícone no menu e na tela inicial é o 鮨 (máscara redonda sem cortar o glifo).
-- [ ] Aba do navegador mostra o favicon.
+- [ ] Enviar o link no WhatsApp: aparece a prévia com o noren, "Kitaguchi Sushi" e o endereço.
+- [ ] iPhone: "Adicionar à Tela de Início" mostra o ícone oficial Kitaguchi Sushi.
+- [ ] Android Chrome: o ícone no menu e na tela inicial é o ícone do Kitaguchi Sushi.
+- [ ] Aba do navegador mostra o favicon do Kitaguchi Sushi.
 
 ## 7. Rede lenta
 - [ ] Chrome desktop apontado para o celular (DevTools › Remote devices) ou o próprio celular em 3G: o hero aparece rápido; as fontes podem trocar de fallback para a final, mas o texto do hero só surge aos ~2s, então a troca não deve ser visível.

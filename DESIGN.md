@@ -1,4 +1,4 @@
-# DESIGN.md — Sushi LM
+# DESIGN.md — Kitaguchi Sushi
 
 Etapa: **análise** (nenhuma linha do site escrita ainda).
 Fonte de verdade de conteúdo: `CLIENTE.md`. Referência visual: `design/mockup-full.png.png` (941×1672 px), fatiado em `design/secoes/`.
@@ -21,7 +21,7 @@ Consequência: todos os slots de foto abaixo ficam como **FOTO REAL — arquivo 
 
 | Fato | Valor | Confiabilidade |
 |---|---|---|
-| Nome | Sushi LM | oficial (Google) |
+| Nome | Kitaguchi Sushi | oficial (Google) |
 | Categoria | Restaurante japonês | oficial |
 | Endereço | R. Afonsina, 244 — Rudge Ramos, São Bernardo do Campo — SP, 09633-000 | oficial |
 | Plus code | 8CWJ+4R Rudge Ramos, São Bernardo do Campo - SP | oficial |
@@ -45,7 +45,7 @@ O mockup é **integralmente gerado por IA**. Serve para ritmo, paleta, tipografi
 | # | Bloco | O que o mockup mostra | Realidade / decisão |
 |---|---|---|---|
 | 01 | Hero (noren) | Noren índigo com 鮨 abrindo para um salão de madeira com lanternas, bambu e plantas | **Inventado.** Não há evidência de que o restaurante tenha noren, lanternas ou esse salão. O noren vira **elemento gráfico CSS/SVG** (claramente ilustração, não foto); o que aparece "atrás" dele tem de ser foto real (salão ou fachada). |
-| 01 | Texto "SUSHI LM" em serifa espaçada | Wordmark tipográfico | Logo real **desconhecido**. Enquanto não chegar, o nome é HTML texto. Pendência: logo em alta. |
+| 01 | Texto "KITAGUCHI SUSHI" em serifa espaçada | Wordmark tipográfico | Logo oficial anexado pelo cliente (`site/assets/logo-150.png`). |
 | 01 | "Rudge Ramos · São Bernardo · 18h30." | Localização + horário | Localização real. "18h30" é só o horário de reabertura num dia — não pode aparecer como horário de funcionamento. |
 | 02 | Barca de sashimi/nigiri/uramaki numa tábua sobre linho | Prato de banco de imagem | **Inventado.** Substituir por foto real de combinado/rodízio do cliente. |
 | 02 | "Rodízio Japonês · R$80 · Livre e Farto." | Preço e slogan | "Rodízio Japonês" é real. **"R$80" não é confirmado** (o Google diz R$ 80–100 por pessoa, informado por usuários). **"Livre e Farto" é slogan inventado** — descartado. |
@@ -54,7 +54,7 @@ O mockup é **integralmente gerado por IA**. Serve para ritmo, paleta, tipografi
 | 05 | Tecido shibori + "4,8★ 330 avaliações · Google" | Prova social | Número **real**. Shibori é decorativo → SVG. |
 | 06 | Faixas: Salmão Nigiri, Temaki de Atum, Shimeji, Hot Roll | Pratos com fotos de banco | **Shimeji é real** ("Mais pedidos"). Salmão nigiri, temaki de atum e hot roll **não aparecem nos dados** — prováveis num rodízio, mas não confirmados. Todas as fotos são inventadas. |
 | 07 | Cortinas índigo com 鮨 abertas para o salão + "Está pronto para entrar?" | Convite final | Cortinas → CSS/SVG. Salão **inventado**. Frase é copy de convite genérica — trato como texto provisório marcado (não é fato, mas também não é dado do cliente). |
-| 08 | "Reserve via WhatsApp →" + "SUSHI LM · R. Afonsina, 244 · Rudge Ramos · SBC" | CTA + endereço | Endereço **real**. **"Reserve" não é confirmado**: não sabemos se aceitam reserva nem se o número é WhatsApp. CTA provisório: "Fale no WhatsApp" até confirmação. |
+| 08 | "Fale no WhatsApp →" + "Kitaguchi Sushi · Av. Itamarati, 1122 · Vila Curuçá · Santo André" | CTA + endereço | Endereço **real**. |
 | — | Bambu, costela-de-adão, lanternas de papel nas bordas | Decoração de cena | **Descartados.** Sugerem um ambiente que não existe. |
 | — | Kanji 鮨 (sushi) | Tipografia decorativa | Mantido como **texto HTML** decorativo (`aria-hidden`), palavra genérica, não é marca do cliente. |
 
@@ -69,7 +69,7 @@ Amostragem por mediana de regiões do PNG (script Python/PIL). Nomes são os tok
 | `--indigo-950` | `#061626` | faixa do rodapé |
 | `--indigo-900` | `#0A1D31` | blocos lisos (cozinha, faixas do cardápio) |
 | `--indigo-700` | `#122740` | tom médio do shibori / realce do tecido |
-| `--papel` | `#F7E9CA` | texto "SUSHI LM" sobre o noren |
+| `--papel` | `#F7E9CA` | texto "Kitaguchi Sushi" sobre o noren |
 | `--linho` | `#E6D4BE` | fundo creme (avaliação, faixas claras) |
 | `--linho-sombra` | `#CDB49E` | linho em sombra (legenda do rodízio) |
 | `--kanji` | `#CDB198` | 鮨 pintado no noren |
@@ -226,7 +226,7 @@ Mantenha tudo idêntico: mesma composição, mesmos alimentos, mesmas formas, co
 **A3 — Logo pequeno ou em baixa**
 ```
 Anexo: IMAGENS/<ARQUIVO do logo>
-Mantenha tudo idêntico: mesmo desenho, mesmas letras, mesma grafia "Sushi LM", mesmas proporções, mesmas cores e mesmo espaçamento. Só corrija isto: reconstrua o logo em alta resolução (2000 px de largura) com bordas nítidas e fundo transparente, removendo pixelização e o fundo atual. Não redesenhe, não troque a fonte, não adicione elementos.
+Mantenha tudo idêntico: mesmo desenho, mesmas letras, mesma grafia "Kitaguchi Sushi", mesmas proporções, mesmas cores e mesmo espaçamento. Só corrija isto: reconstrua o logo em alta resolução (2000 px de largura) com bordas nítidas e fundo transparente, removendo pixelização e o fundo atual. Não redesenhe, não troque a fonte, não adicione elementos.
 ```
 (Preferível: pedir o vetor original ao cliente — ver pendências. A3 só se ele não tiver.)
 
@@ -252,7 +252,7 @@ Mantenha tudo idêntico na área original da foto: mesmo prato, mesma mesa, mesm
 | # | Pendência | Onde aparece no site | Placeholder até lá |
 |---|---|---|---|
 | 1 | **Fotos originais**: pratos, rodízio, salão, fachada, preparo; e **direito de uso** delas | todas as seções | bloco `--indigo-900` com comentário `<!-- PENDÊNCIA-CLIENTE: foto -->` |
-| 2 | **Logo** em vetor ou PNG alta | hero, rodapé, favicon | wordmark HTML "SUSHI LM" |
+| 2 | **Logo** em vetor ou PNG alta | hero, rodapé, favicon | logo oficial Kitaguchi Sushi (`site/assets/logo-150.png`) |
 | 3 | **Preço oficial do rodízio** (almoço × jantar × fim de semana; criança?) | 02, 06 | "Consulte o valor no WhatsApp" + comentário |
 | 4 | **O que o rodízio inclui** (sobremesa? bebida? pratos quentes? tempo limite?) | 02 | omitido |
 | 5 | **Horário completo por dia da semana** (só sabemos: fecha 15h30, reabre 18h30 num dia) | 01, 08 | omitido + comentário |
@@ -264,7 +264,7 @@ Mantenha tudo idêntico na área original da foto: mesmo prato, mesma mesa, mesm
 
 ### Mensagem pronta para o cliente
 
-> Oi! Tudo bem? Aqui é do site do Sushi LM 🍣 Já estamos montando o layout e, para colocar no ar, preciso confirmar algumas coisas com vocês:
+> Oi! Tudo bem? Aqui é do site do Kitaguchi Sushi 🍣 Já estamos montando o layout e, para colocar no ar, preciso confirmar algumas coisas com vocês:
 >
 > 1. **Fotos**: podem me mandar as fotos originais (as do celular, sem filtro/legenda) dos pratos, do rodízio, do salão, da fachada e, se tiver, do sushiman preparando? Posso usar todas no site?
 > 2. **Logo**: vocês têm o logo em arquivo de boa qualidade (PDF, SVG, AI ou PNG grande com fundo transparente)?

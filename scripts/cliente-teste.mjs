@@ -15,15 +15,15 @@ try {
   node(['scripts/build.mjs'], { CLIENTE_CONFIG: 'scripts/cliente-exemplo.json' });
   const html = readFileSync(resolve(ROOT, 'site/index.html'), 'utf8');
   const ld = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
-  ok(html.includes('<title>Sushi L&amp;M — '), 'nome oficial no <title>');
-  ok(html.includes('<span>Sushi</span> <span>L&amp;M</span>'), 'nome oficial no <h1>');
+  ok(html.includes('<title>Kitaguchi Sushi — '), 'nome oficial no <title>');
+  ok(html.includes('<span>Kitaguchi</span> <span>Sushi</span>'), 'nome oficial no <h1>');
   ok(html.includes('class="s-rodizio__preco" data-reveal>R$ 00,00 por pessoa · EXEMPLO</p>'), 'preço sob "Rodízio japonês"');
   ok(html.includes('Ter a Sáb · 11h–15h e 18h30–23h<br>Dom · 11h–16h'), 'horário agrupado no rodapé');
   ok(/Reserve pelo WhatsApp/.test(html), 'CTA do rodapé vira "Reserve pelo WhatsApp"');
   ok(!/Temaki de salmão<\/h3>/.test(html), 'prato marcado false sai do site');
   ok(!/Karlen F\.|Anderson F\./.test(html) && /Avaliação no Google/.test(html), 'citações sem nome quando não autorizado');
-  ok(ld.priceRange === 'R$ 00–00' && ld.acceptsReservations === true && ld.hasMenu && ld.sameAs?.length === 1 && ld.openingHoursSpecification?.length === 3 && ld.url === 'https://exemplo.invalid/' && ld.alternateName === 'Sushi LM',
-    'JSON-LD com priceRange, reservas, cardápio, Instagram, horários, url e alternateName');
+  ok(ld.priceRange === 'R$ 00–00' && ld.acceptsReservations === true && ld.hasMenu && ld.sameAs?.length === 1 && ld.openingHoursSpecification?.length === 3 && ld.url === 'https://exemplo.invalid/',
+    'JSON-LD com priceRange, reservas, cardápio, Instagram, horários e url');
   ok(html.includes('<link rel="canonical" href="https://exemplo.invalid/">'), 'canonical ativo com domínio');
   const audit = node(['scripts/audit.mjs']);
   const total = (audit.match(/^[✓✗]/gm) || []).length, verdes = (audit.match(/^✓/gm) || []).length;

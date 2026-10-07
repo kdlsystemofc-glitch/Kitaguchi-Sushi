@@ -1,7 +1,7 @@
 {
   "_leia-me": "SÓ PARA TESTE (scripts/cliente-teste.mjs). Dados FICTÍCIOS, marcados como EXEMPLO. Nunca copiar para cliente.config.json.",
   "dominio": "https://exemplo.invalid",
-  "nome": { "oficial": "Sushi L&M" },
+  "nome": { "oficial": "Kitaguchi Sushi" },
   "whatsapp": { "numeroEhWhatsapp": true, "aceitaReserva": true },
   "rodizio": { "precoTexto": "R$ 00,00 por pessoa · EXEMPLO", "priceRange": "R$ 00–00" },
   "horarios": [

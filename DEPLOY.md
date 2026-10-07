@@ -1,4 +1,4 @@
-# DEPLOY.md — publicação do Sushi LM
+# DEPLOY.md — publicação do Kitaguchi Sushi
 
 Documenta **o que** a hospedagem precisa fazer, sem escolher qual. Nada aqui está configurado no repositório.
 

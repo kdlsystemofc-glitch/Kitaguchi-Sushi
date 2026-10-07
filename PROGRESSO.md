@@ -1,4 +1,4 @@
-# PROGRESSO — Sushi LM
+# PROGRESSO — Kitaguchi Sushi
 
 ## Etapa 1 — Análise (2026-09-29) ✅
 - Mockup fatiado por bloco de conteúdo em `design/secoes/` (8 fatias, 01-hero-noren → 08-rodape-cta).
