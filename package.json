@@ -1,0 +1,27 @@
+{
+  "name": "kitaguchi-sushi",
+  "version": "1.0.0",
+  "description": "Site do Kitaguchi Sushi (restaurante japonês, Santo André - SP)",
+  "main": "index.js",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/ref.mjs comparar && node scripts/sem-js.mjs && node scripts/audit.mjs && node scripts/motion-test.mjs global && node scripts/seo-test.mjs && node scripts/cliente-teste.mjs",
+    "test:webkit": "node scripts/testar-webkit.mjs",
+    "test:motion": "node scripts/motion-test.mjs global && node scripts/motion-orcamento.mjs",
+    "lighthouse": "node scripts/lh.mjs final 5"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.26",
+    "lighthouse": "^12.8.2",
+    "pixelmatch": "^5.3.0",
+    "playwright": "^1.63.0",
+    "pngjs": "^7.0.0",
+    "terser": "^5.51.2"
+  },
+  "private": true
+}

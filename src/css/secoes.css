@@ -1,0 +1,458 @@
+/* ═══ 01 · HERO — noren (CSS/SVG) sobre foto real ═══ */
+.s-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: clamp(34rem, 100vh, 60rem);
+  min-height: clamp(34rem, 100svh, 60rem);
+  overflow: hidden;
+  overflow: clip;
+  background: var(--indigo-950);
+}
+.s-hero__foto {
+  position: absolute; inset: 0; z-index: -2;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 60%;
+}
+/* Vinheta: escurece as laterais e o pé, como a luz baixa do salão do mockup */
+.s-hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(to bottom, transparent 50%, var(--indigo-950) 98%),
+    radial-gradient(ellipse 55% 75% at 50% 40%, rgb(var(--indigo-950-rgb) / 0.35), rgb(var(--indigo-950-rgb) / 0.88) 100%);
+}
+
+.noren {
+  --noren-vao: clamp(.5rem, 4vw, 5rem);
+  position: absolute; top: 0; inset-inline: 0;
+  height: 88%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--noren-vao);
+  padding-inline: clamp(.75rem, -2rem + 14vw, 10rem);
+}
+.noren__painel {
+  position: relative;
+  container-type: inline-size;
+  display: grid; place-items: center;
+  padding: var(--space-4) var(--space-3);
+  background-color: var(--indigo-900);
+  background-image:
+    var(--trama),
+    /* dobra na vara (topo mais escuro) */
+    linear-gradient(to bottom, rgb(var(--indigo-950-rgb) / 0.9), transparent 22%),
+    /* caimento do tecido: vincos verticais suaves */
+    repeating-linear-gradient(90deg,
+      transparent 0 9%,
+      rgb(var(--indigo-950-rgb) / 0.35) 12%,
+      transparent 15% 27%,
+      rgb(var(--indigo-700-rgb) / 0.6) 30%,
+      transparent 33%),
+    linear-gradient(to bottom, var(--indigo-900), var(--indigo-700));
+  /* barra inferior levemente irregular, como tecido cortado à mão */
+  clip-path: polygon(0 0, 100% 0, 100% 99.2%, 78% 99.8%, 52% 99.1%, 27% 100%, 0 99.4%);
+}
+.noren__kanji {
+  font-size: clamp(6rem, 3.5rem + 11vw, 13rem);
+  font-size: min(clamp(6rem, 3.5rem + 11vw, 13rem), 70cqi);
+  /* tinta absorvida pelo tecido: máscara de ruído */
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.1 1.45'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.1 1.45'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.noren__marca {
+  display: grid; justify-items: center; gap: var(--space-3);
+  text-align: center;
+}
+.noren__nome {
+  font-size: clamp(1.6rem, 1rem + 2.6vw, 3rem);
+  /* com texto ampliado (200%) o nome não pode passar da largura do painel */
+  font-size: min(clamp(1.6rem, 1rem + 2.6vw, 3rem), 16cqi);
+  color: var(--papel);
+  /* compensa o espaçamento após a última letra para centralizar */
+  margin-right: calc(-1 * var(--track-versal));
+}
+.noren__nome span { display: block; }
+.noren__local {
+  font-size: var(--fs-xs);
+  color: var(--papel-suave);
+  letter-spacing: .02em;
+  line-height: 1.5;
+  text-wrap: balance;
+}
+.noren__local span { display: block; }
+.noren__cta {
+  font-size: min(var(--fs-xs), 7.5cqi);
+  display: inline-flex; align-items: center; gap: .5em;
+  min-height: 2.75rem;
+  color: var(--papel);
+  text-decoration: none;
+  border-bottom: 1px solid var(--fio);
+}
+.noren__cta:hover { color: var(--salmao-claro); border-color: currentColor; }
+
+@media (min-width: 48rem) {
+  .noren__nome span { display: inline; }
+  .noren__nome span + span { margin-left: var(--track-versal); }
+  .noren__local { letter-spacing: .08em; }
+  .noren__local span { display: inline; white-space: nowrap; }
+  .noren__local span + span::before { content: " · "; }
+}
+
+/* ── Abertura do noren (só CSS: roda na 1ª pintura, não depende de JS) ──
+   Exceção pedida pelo cliente à regra "decorativo caro não se move": acontece UMA vez,
+   só transform nos painéis (sem filter/opacity), ~2,5s, e termina exatamente no layout
+   estático. fill-mode backwards: depois do fim nada fica preso, e o parallax (GSAP) da
+   foto volta a valer. Movimento reduzido: o reset do base.css zera a duração → hero já aberto. */
+@media (prefers-reduced-motion: no-preference) {
+  .noren__painel { transform-origin: 50% 0; animation: 2.5s backwards; }
+  .noren__painel--esq { animation-name: noren-abre-esq; }
+  .noren__painel--dir { animation-name: noren-abre-dir; }
+  .s-hero__foto { animation: hero-entra 2.4s cubic-bezier(.2, .6, .2, 1) .2s backwards; }
+  .s-hero::before { animation: hero-luz 2.5s ease-in-out backwards; }
+  .noren__kanji { animation: kanji-carimbo .6s cubic-bezier(.3, 1.4, .5, 1) 1.75s backwards; }
+  .noren__marca > * { animation: marca-surge .8s cubic-bezier(.16, 1, .3, 1) backwards; }
+  .noren__nome  { animation-delay: 1.85s; }
+  .noren__local { animation-delay: 2s; }
+  .noren__cta   { animation-delay: 2.15s; }
+  /* visitante que pausou as animações: hero já aberto (classe posta pelo script inline do <head>) */
+  .sem-abertura .noren__painel, .sem-abertura .s-hero__foto, .sem-abertura .s-hero::before,
+  .sem-abertura .noren__kanji, .sem-abertura .noren__marca > * { animation: none; }
+}
+/* fechado (encostados no centro) → abre com força, a barra arrastando atrás →
+   a barra passa do ponto → volta balançando até o repouso (= layout estático) */
+@keyframes noren-abre-esq {
+  0%, 9% { transform: translateX(calc(var(--noren-vao) / 2)); animation-timing-function: cubic-bezier(.55, 0, .2, 1); }
+  36%    { transform: translateX(-54%) rotate(-3.5deg); animation-timing-function: cubic-bezier(.3, 0, .4, 1); }
+  50%    { transform: translateX(-56%) rotate(2.4deg); animation-timing-function: cubic-bezier(.45, 0, .35, 1); }
+  74%    { transform: translateX(3%) rotate(-1.2deg); animation-timing-function: ease-in-out; }
+  89%    { transform: translateX(-1%) rotate(.5deg); animation-timing-function: ease-in-out; }
+  100%   { transform: none; }
+}
+@keyframes noren-abre-dir {
+  0%, 9% { transform: translateX(calc(var(--noren-vao) / -2)); animation-timing-function: cubic-bezier(.55, 0, .2, 1); }
+  36%    { transform: translateX(54%) rotate(3.5deg); animation-timing-function: cubic-bezier(.3, 0, .4, 1); }
+  50%    { transform: translateX(56%) rotate(-2.4deg); animation-timing-function: cubic-bezier(.45, 0, .35, 1); }
+  74%    { transform: translateX(-3%) rotate(1.2deg); animation-timing-function: ease-in-out; }
+  89%    { transform: translateX(1%) rotate(-.5deg); animation-timing-function: ease-in-out; }
+  100%   { transform: none; }
+}
+/* a foto surge atrás do noren com um avanço de câmera (você entra) */
+@keyframes hero-entra {
+  from { opacity: 0; transform: scale(1.14); }
+  30%  { opacity: 1; }
+  to   { opacity: 1; transform: none; }
+}
+/* a luz do salão entra pela porta aberta: a vinheta alivia e volta quando o noren assenta */
+@keyframes hero-luz {
+  0%, 12% { opacity: 1; }
+  40%, 58% { opacity: .35; }
+  100% { opacity: 1; }
+}
+/* 鮨 carimbado no tecido */
+@keyframes kanji-carimbo {
+  from { opacity: 0; transform: scale(1.25); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes marca-surge {
+  from { opacity: 0; transform: translateY(.9rem); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ═══ 02 · RODÍZIO — prato real sobre linho ═══ */
+.s-rodizio { color: var(--tinta); padding-block: var(--space-6) var(--space-6); }
+.s-rodizio__corpo { display: grid; justify-items: center; gap: var(--space-5); max-width: 76rem; }
+.s-rodizio__foto { position: relative; width: 100%; max-width: 60rem; aspect-ratio: 3 / 2; overflow: hidden; }
+.s-rodizio__foto img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.s-rodizio__legenda { text-align: center; }
+.s-rodizio__titulo { font-size: var(--fs-lg); font-size: min(var(--fs-lg), 8vw); margin-right: calc(-1 * var(--track-versal)); }
+.s-rodizio__nota { margin-top: var(--space-3); color: var(--tinta-suave); font-size: var(--fs-sm); }
+/* Preço (só aparece quando cliente.config.json → rodizio.precoTexto for preenchido) */
+.s-rodizio__preco { margin-top: var(--space-2); font-family: var(--f-display); font-weight: 600; font-size: var(--fs-md); color: var(--tinta); }
+@media (min-width: 48rem) {
+  .s-rodizio__foto { aspect-ratio: 16 / 9; }
+  .s-rodizio__foto img { object-position: 50% 45%; }
+}
+
+/* ═══ 03 · COZINHA — citação real sobre índigo + foto ═══ */
+.s-cozinha { background: var(--indigo-900); }
+.s-cozinha__texto {
+  display: grid; place-items: center;
+  padding: var(--space-7) var(--gutter);
+  text-align: center;
+}
+.s-cozinha__frase {
+  font-size: var(--fs-lg);
+  /* versal espaçada: com texto a 200% a palavra mais longa ("FRESQUINHA") não pode passar da tela */
+  font-size: min(var(--fs-lg), 8vw);
+  max-width: 12em;
+  margin-inline: auto;
+  color: var(--papel);
+  text-wrap: balance;
+  overflow-wrap: normal;
+}
+.s-cozinha__autor {
+  margin-top: var(--space-3);
+  font-size: var(--fs-xs);
+  letter-spacing: .08em;
+  color: var(--papel-suave);
+}
+.s-cozinha__foto img { width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+@media (min-width: 48rem) {
+  .s-cozinha { min-height: clamp(22rem, 36vw, 34rem); }
+  .s-cozinha__foto { position: relative; overflow: hidden; }
+  .s-cozinha__foto img { position: absolute; inset: 0; aspect-ratio: auto; object-position: 50% 40%; }
+  .s-cozinha__frase { font-size: clamp(2rem, 1rem + 2.2vw, 3.25rem); font-size: min(clamp(2rem, 1rem + 2.2vw, 3.25rem), 3.6vw); }
+}
+
+/* ═══ 04 · MESA — foto real da mesa em faixa larga + serviços (Google) ═══ */
+.s-mesa {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: end;
+  min-height: clamp(26rem, 42vw, 38rem);
+  background: var(--indigo-950);
+}
+.s-mesa__foto { position: absolute; inset: 0; z-index: -2; }
+.s-mesa__foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.s-mesa::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(to top, var(--indigo-950) 0%, rgb(var(--indigo-950-rgb) / 0.7) 30%, transparent 65%),
+    linear-gradient(to bottom, rgb(var(--indigo-950-rgb) / 0.45), transparent 25%);
+}
+.s-mesa__legenda {
+  padding: var(--space-6) var(--gutter) var(--space-5);
+  text-align: center;
+}
+.s-mesa__titulo {
+  font-family: var(--f-texto);
+  font-weight: 400;
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.9rem);
+  color: var(--papel);
+}
+.s-mesa__servicos {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: var(--space-1) var(--space-4);
+  margin-top: var(--space-3);
+  color: var(--papel-suave);
+}
+.s-mesa__servicos li + li::before { content: "·"; margin-right: var(--space-4); color: var(--fio); }
+@media (max-width: 29.99rem) {
+  .s-mesa__servicos { flex-direction: column; }
+  .s-mesa__servicos li + li::before { content: none; }
+}
+
+/* ═══ 05 · AVALIAÇÕES — shibori SVG (parado) + nota real ═══ */
+.s-avaliacoes__tecido { position: relative; min-height: clamp(12rem, 50vw, 18rem); background: var(--indigo-900); overflow: hidden; overflow: clip; }
+/* O filtro do shibori (turbulência + deslocamento + desfoque) custava ~70ms na 1ª pintura mesmo
+   fora da tela. content-visibility: auto pula a pintura até a seção se aproximar e pinta o MESMO
+   SVG depois (uma pré-renderização em WebP foi testada e rejeitada: 1,6% de diferença de pixels).
+   Layout intacto: a caixa é esticada pela grade (desktop) ou tem min-height (celular).
+   Sem suporte: ignorado. */
+.s-avaliacoes__tecido { content-visibility: auto; contain-intrinsic-size: auto clamp(12rem, 50vw, 18rem); }  /* = min-height */
+.shibori { position: absolute; inset: 0; width: 100%; height: 100%; }
+.shibori__fundo { fill: var(--indigo-900); }
+.shibori__tinta { fill: var(--papel); fill-opacity: .82; }
+/* trama de linho por cima: o desenho parece tingido no tecido, não impresso */
+.s-avaliacoes__tecido::after { content: ""; position: absolute; inset: 0; background-image: var(--trama), var(--trama); background-size: auto, 120px; }
+.s-avaliacoes__nota {
+  display: grid; justify-items: center; align-content: center;
+  padding: var(--space-6) var(--gutter);
+  text-align: center;
+  color: var(--tinta);
+}
+.s-avaliacoes__numero {
+  display: flex; align-items: flex-start; gap: .12em;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: var(--fs-hero);
+  line-height: .9;
+  font-variant-numeric: lining-nums;
+}
+.s-avaliacoes__estrela { font-size: .42em; margin-top: .35em; font-family: var(--f-texto); }
+.s-avaliacoes__fonte { margin-top: var(--space-2); font-size: var(--fs-md); }
+.s-avaliacoes__citacao {
+  margin-top: var(--space-5);
+  max-width: var(--measure-citacao);
+  font-style: italic;
+  color: var(--tinta);
+}
+.s-avaliacoes__citacao figcaption {
+  margin-top: var(--space-2);
+  font-style: normal;
+  font-size: var(--fs-xs);
+  letter-spacing: .08em;
+  color: var(--tinta-suave);
+}
+@media (min-width: 48rem) {
+  .s-avaliacoes { min-height: clamp(24rem, 36vw, 34rem); }
+  .s-avaliacoes__tecido { min-height: 0; contain-intrinsic-size: auto 0px; }
+}
+
+/* ═══ 06 · CARDÁPIO — faixas alternadas índigo/linho, foto se funde na cor ═══ */
+.prato {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas: "nome foto";
+  align-items: center;
+  min-height: clamp(9rem, 18vw, 17rem);
+}
+.prato--foto-esquerda { grid-template-areas: "foto nome"; }
+.prato--indigo { background-color: var(--indigo-900); background-image: var(--trama); color: var(--papel); }
+.prato--linho  { background-color: var(--linho); background-image: var(--trama); color: var(--tinta); }
+.prato__nome {
+  grid-area: nome;
+  padding: var(--space-4) var(--space-3);
+  text-align: center;
+  font-size: var(--fs-md);
+  font-size: clamp(1.05rem, .8rem + 1.1vw, 1.9rem);
+  font-size: min(clamp(1.05rem, .8rem + 1.1vw, 1.9rem), 4.4vw);
+  letter-spacing: .22em;
+  text-indent: .22em; /* equilibra o espaço após a última letra */
+}
+.prato__foto { grid-area: foto; align-self: stretch; position: relative; overflow: hidden; }
+.prato__foto img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 40%);
+          mask-image: linear-gradient(to right, transparent, #000 40%);
+}
+.prato--foto-esquerda .prato__foto img {
+  -webkit-mask-image: linear-gradient(to left, transparent, #000 40%);
+          mask-image: linear-gradient(to left, transparent, #000 40%);
+}
+.prato__foto img[src*="nigiri"] { object-position: 50% 42%; }
+.prato__foto img[src*="temaki"] { object-position: 50% 40%; }
+.prato__foto img[src*="sobremesa"] { object-position: 50% 45%; }
+.prato--sem-foto { grid-template-columns: 1fr; grid-template-areas: "nome" "nota"; align-content: center; justify-items: center; }
+.prato--sem-foto .prato__nome { padding-bottom: 0; }
+.prato__nota {
+  grid-area: nota;
+  padding: var(--space-3) var(--gutter) var(--space-4);
+  text-align: center;
+  font-size: var(--fs-xs);
+  letter-spacing: .08em;
+  color: var(--papel-suave);
+}
+
+/* ═══ 07 · CONVITE — cortinas amarradas (CSS) + foto real do salão numa janela ═══ */
+.s-convite {
+  --janela: min(100%, 46rem);
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: end;
+  justify-items: center;
+  min-height: clamp(34rem, 62vw, 48rem);
+  overflow: hidden;
+  overflow: clip;
+  background: var(--indigo-950);
+}
+.s-convite__janela {
+  position: absolute; inset-block: 0; left: 50%; z-index: -2;
+  width: var(--janela);
+  transform: translateX(-50%);
+}
+.s-convite__janela img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.s-convite__janela::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(to top, var(--indigo-950) 5%, rgb(var(--indigo-950-rgb) / 0.55) 40%, rgb(var(--indigo-950-rgb) / 0.3)),
+    linear-gradient(to right, var(--indigo-950), transparent 18% 82%, var(--indigo-950));
+}
+
+.cortina {
+  --largura: max(30%, calc((100% - var(--janela)) / 2 + 5rem));
+  position: absolute; top: 0; bottom: 0; z-index: -1;
+  width: var(--largura);
+  display: grid; justify-items: center; align-content: start;
+  background-color: var(--indigo-900);
+  background-image:
+    var(--trama),
+    repeating-linear-gradient(90deg,
+      rgb(var(--indigo-950-rgb) / 0.55) 0,
+      transparent 6%,
+      rgb(var(--indigo-700-rgb) / 0.7) 10%,
+      transparent 14%,
+      rgb(var(--indigo-950-rgb) / 0.55) 18%),
+    linear-gradient(to bottom, var(--indigo-950), transparent 15%);
+}
+/* amarrada a ~62% da altura; o tecido afunila para a borda externa e abre embaixo */
+.cortina--esq { left: 0;  clip-path: polygon(0 0, 100% 0, 88% 22%, 58% 50%, 34% 62%, 46% 76%, 72% 100%, 0 100%); }
+.cortina--dir { right: 0; clip-path: polygon(0 0, 100% 0, 100% 100%, 28% 100%, 54% 76%, 66% 62%, 42% 50%, 12% 22%); }
+/* amarra: cordão arredondado que abraça o tecido + borla pendurada */
+.cortina::after { content: ""; position: absolute; background: linear-gradient(to bottom, var(--kanji), var(--madeira)); }
+.cortina::after {
+  top: 60%;
+  width: 38%; height: clamp(.5rem, 1.6%, .9rem);
+  border-radius: 999px;
+}
+.cortina__borla {
+  position: absolute;
+  top: 61%;
+  width: clamp(.3rem, 1%, .5rem); height: clamp(2.5rem, 9%, 5rem);
+  border-radius: 0 0 999px 999px;
+  background: linear-gradient(to bottom, var(--madeira), var(--kanji) 30%, var(--madeira));
+}
+.cortina--esq::after  { left: 0;  transform: rotate(-7deg); transform-origin: left center; }
+.cortina--dir::after  { right: 0; transform: rotate(7deg);  transform-origin: right center; }
+.cortina--esq .cortina__borla { left: 30%; }
+.cortina--dir .cortina__borla { right: 30%; }
+.cortina__kanji { position: absolute; top: 24%; font-size: clamp(2.5rem, 1.5rem + 4vw, 5.5rem); }
+.cortina--esq .cortina__kanji { left: 18%; }
+.cortina--dir .cortina__kanji { right: 18%; }
+
+.s-convite__texto {
+  padding: var(--space-6) var(--gutter) var(--space-6);
+  text-align: center;
+}
+.s-convite__titulo {
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: var(--fs-xl);
+  line-height: 1.05;
+  color: var(--papel);
+}
+.s-convite__bairro { margin-top: var(--space-2); color: var(--papel-suave); font-size: var(--fs-sm); }
+.s-convite__mapa {
+  display: inline-flex; align-items: center; gap: .5em;
+  min-height: 2.75rem; margin-top: var(--space-3);
+  color: var(--papel); text-decoration: none;
+  border-bottom: 1px solid var(--fio);
+}
+.s-convite__mapa:hover { color: var(--salmao-claro); border-color: currentColor; }
+
+/* ═══ 08 · RODAPÉ — CTA + dados reais ═══ */
+.s-rodape { background-color: var(--indigo-950); padding-block: var(--space-6) var(--space-5); }
+.s-rodape__corpo { display: grid; justify-items: center; gap: var(--space-5); text-align: center; }
+.s-rodape__cta {
+  display: inline-flex; align-items: center; gap: .4em;
+  min-height: 2.75rem;
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: var(--fs-lg);
+  color: var(--papel);
+  text-decoration: none;
+  border-bottom: 1px solid var(--fio);
+  padding-inline: var(--space-2);
+}
+.s-rodape__cta:hover { color: var(--salmao-claro); border-color: currentColor; }
+.s-rodape__dados {
+  display: grid; justify-items: center; gap: var(--space-2);
+  font-style: normal;
+  color: var(--papel-suave);
+}
+.s-rodape__dados .rotulo { max-width: 40ch; line-height: 1.8; }
+.s-rodape__dados a { color: var(--papel); text-decoration-color: var(--fio); text-underline-offset: .25em; display: inline-block; min-height: 2.75rem; line-height: 2.75rem; }
+.s-rodape__logo { width: clamp(3.5rem, 3rem + 1.5vw, 4.5rem); border-radius: 50%; }
+/* Horário e links (só aparecem quando preenchidos em cliente.config.json) */
+.s-rodape__horario { color: var(--papel-suave); line-height: 1.9; text-transform: none; letter-spacing: .06em; }  /* "11h–15h", não "11H–15H" */
+.s-rodape__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 var(--space-4); padding: 0; list-style: none; }
+.s-rodape__links a { display: inline-block; min-height: 2.75rem; line-height: 2.75rem; color: var(--papel); text-decoration-color: var(--fio); text-underline-offset: .25em; }
+.s-rodape__links a:hover { color: var(--salmao-claro); }
+@media (min-width: 48rem) { .s-rodape__dados .rotulo { max-width: none; } }

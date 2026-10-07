@@ -1,0 +1,122 @@
+/* Reset + base + grid. Mobile-first. */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+/* paleta fixa: impede o 'modo escuro automático' (Chrome Android/Samsung) de inverter as cores */
+html { color-scheme: only light; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  min-height: 100vh;
+  background: var(--indigo-950);
+  color: var(--papel);
+  font-family: var(--f-texto);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+img, picture, svg { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; }
+button { font: inherit; }
+h1, h2, h3, p { overflow-wrap: break-word; }
+ul[role="list"] { list-style: none; padding: 0; }
+
+:focus-visible { outline: 2px solid var(--salmao-claro); outline-offset: 3px; }
+
+.skip {
+  position: absolute; left: var(--gutter); top: -10rem; z-index: 100;
+  background: var(--papel); color: var(--indigo-900);
+  padding: var(--space-2) var(--space-3);
+}
+.skip:focus { top: var(--space-2); }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Telas acima de 2560px (ultrawide, 4K sem zoom): a página para em 160rem e centraliza.
+   As fotos do cliente têm no máximo 1080px e ficariam ampliadas 4–5×. Até 2560px nada muda
+   (todos os valores fluidos já estão no teto do clamp nessa largura). */
+#hero, main, #rodape { max-width: 160rem; margin-inline: auto; }
+
+/* ── Grid ─────────────────────────────────────── */
+.wrap { width: 100%; padding-inline: var(--gutter); margin-inline: auto; max-width: 96rem; }
+
+/* Divisão foto/texto: empilha no mobile, 2 colunas a partir de 48rem */
+.split { display: grid; grid-template-columns: 1fr; }
+@media (min-width: 48rem) {
+  .split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .split--48-52 { grid-template-columns: minmax(0, 48fr) minmax(0, 52fr); }
+}
+
+/* ── Utilitários de tipo ──────────────────────── */
+.versal {
+  font-family: var(--f-display);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--track-versal);
+  line-height: 1.25;
+}
+.rotulo {
+  font-family: var(--f-texto);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--track-rotulo);
+}
+.fio::after {
+  content: ""; display: block;
+  width: var(--fio-largura); height: 1px;
+  margin: var(--space-3) auto 0;
+  background: var(--fio);
+}
+.fio--escuro::after { background: var(--tinta-suave); }
+
+/* Trama aplicada por seção (não é camada fixa global) */
+.tecido { background-color: var(--indigo-900); background-image: var(--trama); }
+.tecido--linho { background-color: var(--linho); background-image: var(--trama); }
+
+.kanji {
+  font-family: var(--f-kanji);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--kanji);
+}
+
+/* ── Motion (classes postas pelo motion.js; sem JS nada disto se aplica) ── */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* Botão de pausa das animações (criado pelo motion.js, só no modo full) */
+.motion-pausa {
+  position: fixed; z-index: 50;
+  right: max(var(--space-3), env(safe-area-inset-right));
+  bottom: max(var(--space-3), env(safe-area-inset-bottom));
+  display: grid; place-items: center;
+  width: 2.75rem; height: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--fio);
+  border-radius: 50%;
+  background: var(--indigo-950);
+  color: var(--papel);
+  cursor: pointer;
+}
+.motion-pausa:hover { border-color: var(--salmao-claro); color: var(--salmao-claro); }
+/* ícone: duas barras (pausar) ou triângulo (retomar) */
+.motion-pausa__icone { width: .75rem; height: .8rem; border-inline: .22rem solid currentColor; }
+.motion-pausa[aria-pressed="true"] .motion-pausa__icone {
+  width: 0; height: 0; margin-left: .2rem;
+  border-inline: 0;
+  border-left: .7rem solid currentColor;
+  border-block: .45rem solid transparent;
+}

@@ -1,0 +1,63 @@
+/* Tokens — única fonte de cor, tipo e espaço. Valores e justificativas: DESIGN.md §b/§c. */
+:root {
+  /* Índigo (tecido) */
+  --indigo-950: #061626;
+  --indigo-900: #0A1D31;
+  --indigo-700: #122740;
+  /* canais RGB para transparências (compatível com Safari < 16.2, sem color-mix) */
+  --indigo-950-rgb: 6 22 38;
+  --indigo-700-rgb: 18 39 64;
+  /* Neutros claros */
+  --papel: #F7E9CA;
+  --papel-suave: #AFA99B;   /* 7,28:1 sobre indigo-900 */
+  --linho: #E6D4BE;
+  --linho-sombra: #CDB49E;
+  --kanji: #CDB198;
+  --fio: #C7BDB3;
+  /* Neutros escuros */
+  --tinta: #14161B;
+  --tinta-suave: #57514B;   /* 5,41:1 sobre linho */
+  --madeira: #633A13;
+  /* Acento */
+  --salmao: #D0500D;        /* só decorativo / >= 24px */
+  --salmao-texto: #963808;  /* 5,07:1 sobre linho; 6,09:1 com papel por cima */
+  --salmao-claro: #E0662A;  /* 4,95:1 sobre indigo-900 */
+  --ambar: #FCEFCF;
+
+  /* Tipografia */
+  --f-display: 'Cormorant Garamond', 'Iowan Old Style', 'Palatino Linotype', serif;
+  --f-texto: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+  --f-kanji: 'Shippori Mincho', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+
+  --fs-xs: clamp(.75rem, .7rem + .2vw, .85rem);
+  --fs-sm: clamp(.9rem, .85rem + .25vw, 1rem);
+  --fs-md: clamp(1.05rem, 1rem + .35vw, 1.25rem);
+  --fs-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
+  --fs-xl: clamp(2.25rem, 1.5rem + 3.5vw, 4.5rem);
+  --fs-hero: clamp(3.5rem, 2rem + 8vw, 9rem);
+
+  --track-versal: .32em;
+  --track-rotulo: .2em;
+
+  /* Espaço */
+  --space-1: clamp(.25rem, .2rem + .2vw, .5rem);
+  --space-2: clamp(.5rem, .4rem + .4vw, .75rem);
+  --space-3: clamp(.75rem, .6rem + .6vw, 1.25rem);
+  --space-4: clamp(1rem, .8rem + 1vw, 2rem);
+  --space-5: clamp(1.5rem, 1rem + 2vw, 3rem);
+  --space-6: clamp(2rem, 1.2rem + 3.5vw, 4.5rem);
+  --space-7: clamp(3rem, 1.5rem + 6vw, 7rem);
+  --space-8: clamp(4rem, 2rem + 8vw, 9rem);
+  --gutter: clamp(1rem, 5vw, 5.5rem);
+  --measure: 60ch;
+  --measure-citacao: 34ch;
+
+  /* Fios */
+  --fio-largura: clamp(1.5rem, 4vw, 2.5rem);
+
+  /* Movimento (usado na fase de motion) */
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+
+  /* Trama de linho: ruído anisotrópico (fios horizontais + verticais), ~6% alfa, tileável */
+  --trama: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='h'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9 .06' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .09 0'/%3E%3C/filter%3E%3Cfilter id='v'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.06 .9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23h)'/%3E%3Crect width='240' height='240' filter='url(%23v)'/%3E%3C/svg%3E");
+}

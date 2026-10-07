@@ -1,0 +1,50 @@
+{
+  "_leia-me": "Configurações do cliente Kitaguchi Sushi (Santo André). Ao alterar, rode `npm run build` e depois `npm test`.",
+
+  "dominio": null,
+
+  "nome": {
+    "oficial": "Kitaguchi Sushi",
+    "_exemplo": "Kitaguchi Sushi - Santo André"
+  },
+
+  "whatsapp": {
+    "numeroEhWhatsapp": true,
+    "aceitaReserva": false,
+    "_exemplo": "true/false. Se numeroEhWhatsapp=false, os botões viram ligação (tel:). Se aceitaReserva=true, o botão do rodapé vira \"Reserve pelo WhatsApp\" e o JSON-LD ganha acceptsReservations."
+  },
+
+  "rodizio": {
+    "precoTexto": "Sushis a partir de R$ 1 · 10% OFF no balcão",
+    "priceRange": "R$ 20–140",
+    "_exemplo": "precoTexto: frase exibida sob o título da seção. priceRange: faixa para o Google."
+  },
+
+  "horarios": [
+    { "dias": ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"], "abre": "11:00", "fecha": "23:00" }
+  ],
+
+  "links": {
+    "cardapio": "https://www.ifood.com.br/delivery/santo-andre-sp/kitaguchi-sushi-santo-andre-parque-jacatuba/b404036d-615a-470c-bf65-d5ff9c5c8c47",
+    "pedidoOnline": "https://www.ifood.com.br/delivery/santo-andre-sp/kitaguchi-sushi-santo-andre-parque-jacatuba/b404036d-615a-470c-bf65-d5ff9c5c8c47",
+    "instagram": "https://www.instagram.com/kitaguchi_sushi/",
+    "_exemplo": "URLs completas (https://...). Aparecem no rodapé; cardapio vira hasMenu e instagram vira sameAs no JSON-LD."
+  },
+
+  "autorizacoes": {
+    "fotos": true,
+    "citarAvaliacoesComNome": true,
+    "_exemplo": "fotos=true: o cliente autorizou o uso das fotos. citarAvaliacoesComNome=false: as citações ficam como \"avaliação no Google\", sem o primeiro nome."
+  },
+
+  "pratos": {
+    "Nigiri de salmão": true,
+    "Temaki de salmão": true,
+    "Sashimi maçaricado": true,
+    "Sobremesas": true,
+    "_exemplo": "true = confirmado; false = a faixa sai do site."
+  },
+
+  "logoVetor": null,
+  "_logoVetor-exemplo": "Caminho de um SVG em imagens/, ex. \"imagens/logo.svg\"."
+}

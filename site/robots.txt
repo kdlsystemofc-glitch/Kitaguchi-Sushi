@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Sitemap: https://SEU-DOMINIO/sitemap.xml   (ativa sozinho quando cliente.config.json tiver o domínio)

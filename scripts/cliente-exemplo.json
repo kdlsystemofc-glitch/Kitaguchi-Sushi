@@ -1,0 +1,16 @@
+{
+  "_leia-me": "SÓ PARA TESTE (scripts/cliente-teste.mjs). Dados FICTÍCIOS, marcados como EXEMPLO. Nunca copiar para cliente.config.json.",
+  "dominio": "https://exemplo.invalid",
+  "nome": { "oficial": "Sushi L&M" },
+  "whatsapp": { "numeroEhWhatsapp": true, "aceitaReserva": true },
+  "rodizio": { "precoTexto": "R$ 00,00 por pessoa · EXEMPLO", "priceRange": "R$ 00–00" },
+  "horarios": [
+    { "dias": ["Tu", "We", "Th", "Fr", "Sa"], "abre": "11:00", "fecha": "15:00" },
+    { "dias": ["Tu", "We", "Th", "Fr", "Sa"], "abre": "18:30", "fecha": "23:00" },
+    { "dias": ["Su"], "abre": "11:00", "fecha": "16:00" }
+  ],
+  "links": { "cardapio": "https://exemplo.invalid/cardapio", "pedidoOnline": "https://exemplo.invalid/pedido", "instagram": "https://exemplo.invalid/instagram" },
+  "autorizacoes": { "fotos": true, "citarAvaliacoesComNome": false },
+  "pratos": { "Nigiri de salmão": true, "Temaki de salmão": false, "Shimeji": true, "Sobremesas": true },
+  "logoVetor": null
+}
